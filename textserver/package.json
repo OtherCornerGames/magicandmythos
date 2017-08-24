@@ -1,0 +1,15 @@
+{
+  "name": "textserver",
+  "version": "1.0.0",
+  "description": "The server that runs the text based adventure aspect of magic and mythos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "magicandmythos"
+  },
+  "author": "Darryl Kilzer Jr. <darrylkilzer@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "The server that resource requests for cards and game items go through",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "magicandmythos"
+  },
+  "author": "Darryl Kilzer Jr. <darrylkilzer@gmail.com>",
+  "license": "ISC"
+}
