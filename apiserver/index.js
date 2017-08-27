@@ -1,30 +1,20 @@
-var express = require('express')
-var mongoose = require('mongoose')
-var bodyParser = require('body-parser')
-var cors = require('cors')
-var sessions = require('./auth/session')
-var dbConnect = require('.config/db/mlab-config')
-var port = 3000
-
-var server = express()
-
-server.use('/', cors({
-    origin: 'http://localhost:8080',
-    credentials: true
-}))
-
-server.use(sessions)
-server.use(express.static(__dirname + '/www'))
-server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({ extended: true }))
+import server from './config/dev-server'
 
 
-server.listen(port, () => {
-  console.log('Server is listening on port: ', port)
-})
+let mongoose = require('mongoose')
+let connection = mongoose.connection;
 
-//todo setup routers for each api request type
 
-var authRouter = require("./routes/auth")
-server.use('/', authRouter)
+// Establishes MongoDb Connection
+mongoose.connect(process.env.CONNECTIONSTRING, {
+	server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+	replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
+});
 
+connection.on('error', console.error.bind(console, 'connection error:'));
+
+connection.once('open', function () {
+	server.listen(process.env.PORT, function () {
+		console.log(`Running on port: ${process.env.PORT}`);
+	})
+});
