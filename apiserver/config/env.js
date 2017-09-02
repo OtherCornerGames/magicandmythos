@@ -5,7 +5,7 @@ let env = {
 	DBUSERNAME: 'darryl',
 	DBPASSWORD: 'darryl',
 	DBHOST: 'ds047166.mlab.com:47166',
-	DBNAME: 'keepr',
+	DBNAME: 'magicandmythoscards',
 	SERVERNAME: 'API-Server'
 }
 

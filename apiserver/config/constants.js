@@ -13,13 +13,13 @@ const models = {
     // preventDefaultApi: true,
     useCustomRoutes: true
   },
-  keep: {
-    name: 'Keep',
-    endpoint: 'keeps'
+  card: {
+    name: 'Card',
+    endpoint: 'cards'
   },
-  vault: {
-    name: 'Vault',
-    endpoint: 'vaults'
+  deck: {
+    name: 'Deck',
+    endpoint: 'decks'
   }
 }
 
