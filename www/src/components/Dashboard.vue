@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-xs-6">
         <p class="logout pull-left">
-          <img style="width: 10%" src="../assets/logo.jpg">
-          <button type="button" class="toggles" @click="toggleVaults">Vaults</button>
+          
+          <button type="button" class="toggles" @click="toggleDecks">Decks</button>
           <button class="toggles" @click="toggleKeeps">Your Keeps</button>
           <button class="toggles" @click="toggleAllKeeps">All Keeps</button>
         </p>
@@ -33,6 +33,21 @@ export default {
       showDecks: true,
       showDungeon: false,
       showInventory: false
+    }
+  },
+  created(){
+    this.$store.dispatch('getDecks')
+    this.$store.dispatch('getInventory')
+  },
+  computed: {
+    decks() {
+      return this.$store.state.decks
+    },
+    inventory(){
+      return this.$store.state.inventory
+    },
+    user(){
+      return this.$store.state.user
     }
   }
 }

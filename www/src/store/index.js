@@ -22,7 +22,9 @@ let state = {
   decks: [],
   inventory: [],
   activeDeck: {},
-  error: {}
+  error: {},
+  registerMessage: 'Please register an email, user name, and password',
+  loginMessage: 'Please enter your email and password to continue'
 }
 
 let handleError = (err) => {
@@ -35,6 +37,9 @@ export default new Vuex.Store({
     //USER
     setUser(state, user) {
       state.user = user
+    },
+    setLoginMessage(state, error) {
+      state.loginMessage = 'Invalid email or password'
     },
     //CARDS
     setInventory(state, inventory) {
@@ -126,11 +131,13 @@ export default new Vuex.Store({
     login({ commit, dispatch }, user) {
       auth.post('login', user)
         .then(res => {
-          if (res.data.error) {
-            return handleError(res.data.error)
-          }
+          if (!res.data.data) {
+            commit('setLoginMessage', res.data)
+            // return handleError(res.data.error)
+          }else{
           commit('setUser', res.data.data)
           router.push('/dashboard')
+          }
         }).catch(handleError)
     },
     authenticate({ commit, dispatch }) {
