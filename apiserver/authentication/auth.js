@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
           user.password = null
           delete user.password
           res.send({
-            message: `${user.username} successfully logged in`,
+            message: `${user.name} successfully logged in`,
             data: user
           })
         })
