@@ -1,7 +1,7 @@
 let Decks = require('../models/deck')
 let Cards = require('../models/card')
 
-export default {
+module.exports = {
   // GETS
   getCardsByDeckId: {
     path: '/decks/:deckId/cards',

@@ -1,7 +1,7 @@
 let Decks = require('../models/deck')
 let Cards = require('../models/card')
 
-export default {
+module.exports = {
   getDecksByUserId: {
     path: '/userdecks',
     reqType: 'get',

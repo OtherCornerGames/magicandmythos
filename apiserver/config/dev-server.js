@@ -1,11 +1,12 @@
-import env from './env'
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import { defaultErrorHandler, corsOptions } from './handlers'
-import api from '../models'
-import session from '../authentication/sessions'
-import Auth from '../authentication/auth'
+var env = require('./env')
+var express = require('express')
+var bodyParser = require('body-parser')
+var cors = require('cors')
+var defaultErrorHandler = require('./handlers').defaultErrorHandler
+var corsOptions = require('./handlers').corsOptions
+var api = require('../models')
+var session = require('../authentication/sessions')
+var Auth = require('../authentication/auth')
 
 // ENABLE ROUTES IF USING app SIDE ROUTING
 // import routes from './routes'
@@ -14,11 +15,12 @@ let app = express()
 let server = require('http').createServer(app)
 
 function Validate(req, res, next) {
-    console.log(req.session)
-    if (!req.session.uid) {
-        return res.send({ error: 'Please Login or Register to continue' })
-    }
-    return next()
+	// ONLY ALLOW GET METHOD IF NOT LOGGED IN 
+	console.log(req.session)
+	if (req.method !== 'GET' && !req.session.uid) {
+		return res.send({ error: 'Please Login or Register to continue' })
+	}
+	return next()
 }
 
 function logger(req, res, next) {
@@ -26,18 +28,18 @@ function logger(req, res, next) {
 	next()
 }
 
+// REGISTER MIDDLEWARE
 app.use(session)
+app.use(express.static(__dirname + "/../../www/dist/"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(__dirname + '/../../www/dist'))
 app.use('*', logger)
 app.use('*', cors(corsOptions))
 app.use('/', Auth)
 
-// this forces any api request to require authentication
+// LOCKS API TO REQUIRE USER AUTH
 app.use(Validate)
 app.use('/api', api)
 app.use('/', defaultErrorHandler)
 
-
-export default server
+module.exports = server

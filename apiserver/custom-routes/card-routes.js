@@ -1,7 +1,7 @@
-let Cards = require('../models/cards')
+let Cards = require('../models/card')
 
 
-export default {
+module.exports = {
   getCards: {
     path: '/cards',
     reqType: 'get',

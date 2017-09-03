@@ -15,16 +15,18 @@ const models = {
   },
   card: {
     name: 'Card',
-    endpoint: 'cards'
+    endpoint: 'cards',
+    useCustomRoutes: true
   },
   deck: {
     name: 'Deck',
-    endpoint: 'decks'
+    endpoint: 'decks',
+    useCustomRoutes: true    
   }
 }
 
 
-export  {
+module.exports = {
   actions,
   models
 }
