@@ -50,5 +50,6 @@ a{
 }
 h4{
   color: black;
+  font-weight: bold;
 }
 </style>
