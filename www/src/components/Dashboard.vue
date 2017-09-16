@@ -76,6 +76,9 @@ export default {
       this.showDecks = false;
       this.showInventory = false;
       this.showDungeons = true;
+    },
+    logout(user){
+      this.$store.state.dispatch('logout', user)
     }
   },
   components: {
