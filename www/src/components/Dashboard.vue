@@ -78,7 +78,7 @@ export default {
       this.showDungeons = true;
     },
     logout(user){
-      this.$store.state.dispatch('logout', user)
+      this.$store.dispatch('logout', user)
     }
   },
   components: {
