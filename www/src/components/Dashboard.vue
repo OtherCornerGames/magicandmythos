@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-xs-6">
         <p class="logout pull-left">
-          
+
           <button type="button" class="toggles" @click="toggleDecks">Decks</button>
-          <button class="toggles" @click="toggleKeeps">Your Inventory</button>
-          <button class="toggles" @click="toggleAllKeeps">Dungeon</button>
+          <button class="toggles" @click="toggleInventory">Your Inventory</button>
+          <button class="toggles" @click="toggleDungeons">Dungeons</button>
         </p>
         <h1 class="capitalize">Hello, {{user.name}}!</h1>
       </div>
@@ -15,46 +15,80 @@
           <button class="logout" @click="logout(user)">Logout</button>
         </p>
       </div>
-      <decks v-if="this.showDecks"></decks>
-      <inventory v-if="this.showInventory"></inventory>
-      <dungeon v-if="this.showDungeon"></dungeon>
+      <div v-if="this.showDecks">
+        <div v-for="deck in decks">
+          <deck :deck="deck"></deck>
+        </div>
+      </div>
+      <div v-if="this.showInventory">
+        <div v-for="card in inventory">
+        <inventory :card="card"></inventory>
+        </div>
+      </div>
+      <div v-if="this.showDungeons">
+        <div v-for="dungeon in dungeons">
+        <dungeon :dungeon="dungeon"></dungeon>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Decks from './Decks'
+import Deck from './Deck'
 import Inventory from './Inventory'
 import Dungeon from './Dungeon'
 export default {
   name: 'dashboard',
-  data () {
+  data() {
     return {
       showDecks: true,
-      showDungeon: false,
+      showDungeons: false,
       showInventory: false
     }
-  },
-  created(){
-    this.$store.dispatch('getDecks')
-    this.$store.dispatch('getInventory')
   },
   computed: {
     decks() {
       return this.$store.state.decks
     },
-    inventory(){
+    inventory() {
       return this.$store.state.inventory
     },
-    user(){
+    dungeons() {
+      return this.$store.state.dungeons
+    },
+    user() {
       return this.$store.state.user
     }
+  },
+  methods: {
+    toggleDecks() {
+      this.showDecks = true;
+      this.showInventory = false;
+      this.showDungeons = false;
+    },
+    toggleInventory() {
+      this.showDecks = false;
+      this.showInventory = true;
+      this.showDungeons = false;
+    },
+    toggleDungeons() {
+      this.showDecks = false;
+      this.showInventory = false;
+      this.showDungeons = true;
+    }
+  },
+  components: {
+    Deck,
+    Inventory,
+    Dungeon
   }
 }
 </script>
 
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 

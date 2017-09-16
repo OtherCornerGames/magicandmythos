@@ -1,6 +1,6 @@
 <template>
   <div class="inventory">
-
+    {{card.name}}
 
   </div>
 </template>
@@ -9,12 +9,13 @@
 <script>
 export default {
   name: 'inventory',
-  data(){
+  props: ["card"],
+  data() {
     return {}
   },
-  computed:{},
-  methods:{},
-  components:{}
+  computed: {},
+  methods: {},
+  components: {}
 }
 </script>
 

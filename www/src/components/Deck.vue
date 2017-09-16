@@ -1,6 +1,6 @@
 <template>
-  <div class="decks">
-
+  <div class="deck">
+    {{deck.name}}
 
   </div>
 </template>
@@ -8,7 +8,8 @@
 
 <script>
 export default {
-  name: 'decks',
+  name: 'deck',
+  props: ["deck"],
   data(){
     return {}
   },

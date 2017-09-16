@@ -19,8 +19,9 @@ let auth = axios.create({
 
 let state = {
   user: {},
-  decks: [],
-  inventory: [],
+  decks: [{ name: "deck one" }],
+  inventory: [{ name: "card one" }],
+  dungeons: [{ name: "dungeon one" }],
   activeDeck: {},
   error: {},
   registerMessage: 'Please register an email, user name, and password',
@@ -134,9 +135,9 @@ export default new Vuex.Store({
           if (!res.data.data) {
             commit('setLoginMessage', res.data)
             // return handleError(res.data.error)
-          }else{
-          commit('setUser', res.data.data)
-          router.push('/dashboard')
+          } else {
+            commit('setUser', res.data.data)
+            router.push('/dashboard')
           }
         }).catch(handleError)
     },
