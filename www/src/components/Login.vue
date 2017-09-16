@@ -4,10 +4,11 @@
     <p>{{message}}</p>
     <form @submit.prevent="login">
       <div class="form-group">
+        <input type="name" class="form-control-small input-sm" v-model="name" placeholder="Name" required>
         <input type="email" class="form-control-small input-sm" v-model="email" placeholder="Email" required>
+        <input type="password" class="form-control-small input-sm" v-model="password" placeholder="Password" required>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control-small input-sm" v-model="password" placeholder="Password" required>
       </div>
       <button class="btn btn-primary" type="submit">Login</button>
     </form>
@@ -23,6 +24,7 @@
     name: 'login',
     data() {
       return {
+        name: '',
         email: '',
         password: ''
       }
@@ -34,7 +36,7 @@
     },
     methods: {
       login() {
-      this.$store.dispatch('login', { email: this.email,  password: this.password })
+      this.$store.dispatch('login', { name: this.name, email: this.email,  password: this.password })
     }
     },
     components: {}
