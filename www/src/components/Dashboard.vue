@@ -5,8 +5,8 @@
         <p class="logout pull-left">
           
           <button type="button" class="toggles" @click="toggleDecks">Decks</button>
-          <button class="toggles" @click="toggleKeeps">Your Keeps</button>
-          <button class="toggles" @click="toggleAllKeeps">All Keeps</button>
+          <button class="toggles" @click="toggleKeeps">Your Inventory</button>
+          <button class="toggles" @click="toggleAllKeeps">Dungeon</button>
         </p>
         <h1 class="capitalize">Hello, {{user.name}}!</h1>
       </div>
