@@ -1,14 +1,19 @@
 <template>
   <div id="app">
+    <navbar></navbar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import navbar from './components/navbar'
 export default {
   name: 'app',
   mounted() {
     this.$store.dispatch('authenticate')
+  },
+  components:{
+    navbar
   }
 }
 </script>
