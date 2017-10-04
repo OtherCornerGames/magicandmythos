@@ -8,7 +8,7 @@
           <button class="toggles" @click="toggleInventory">Your Inventory</button>
           <button class="toggles" @click="toggleDungeons">Dungeons</button>
         </p>
-        <h1 class="capitalize">Hello, {{user.name}}!</h1>
+        <h1 class="capitalize">Hello, {{user.username}}!</h1>
       </div>
       <div class="col-xs-6">
         <p class="logout pull-right">
