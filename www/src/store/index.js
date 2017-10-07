@@ -173,6 +173,7 @@ export default new Vuex.Store({
             // return handleError(res.data.error)
           } else {
             commit('setUser', res.data.data)
+            commit('setLoggedIn', true)            
             router.push('/dashboard')
           }
         }).catch(handleError)
@@ -181,9 +182,10 @@ export default new Vuex.Store({
       auth('authenticate')
         .then(res => {
           if (!res.data.data) {
-            router.push('/login')
+            router.push('/')
           } else {
             commit('setUser', res.data.data)
+            commit('setLoggedIn', true)
             router.push('/dashboard')
           }
         }).catch(err => {
@@ -193,7 +195,8 @@ export default new Vuex.Store({
     logout({ commit, dispatch }, user) {
       auth.delete('logout', user)
         .then(res => {
-          commit('setUser', {status: false})
+          commit('setUser', {})
+          commit('setLoggedIn', false)          
           router.push('/login')
         }).catch(handleError)
     }

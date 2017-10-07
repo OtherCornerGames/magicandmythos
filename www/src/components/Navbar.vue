@@ -48,10 +48,10 @@
                     </li>
                   </ul>
                 </div>
-                <div v-show="loggedIn = false">
+                <div v-show="loggedIn == false">
                   <ul class="nav navbar-nav navbar-right padding-right">
                     <li>
-                      <a class="toggles" @click="login(user)">Login</a>
+                      <router-link class="toggles" to="/login">Login</router-link>
                     </li>
                   </ul>
                 </div>
