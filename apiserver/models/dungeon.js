@@ -16,4 +16,4 @@ var schema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model(models.deck.name, schema);
+module.exports = mongoose.model(models.dungeon.name, schema);

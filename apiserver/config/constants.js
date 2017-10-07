@@ -22,6 +22,11 @@ const models = {
     name: 'Deck',
     endpoint: 'decks',
     useCustomRoutes: true    
+  },
+  dungeon: {
+    name: 'Dungeon',
+    endpoint: 'dungeons',
+    // useCustomRoutes: true    
   }
 }
 

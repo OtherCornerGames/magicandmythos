@@ -22,7 +22,7 @@
       </div>
       <div v-if="this.showInventory">
         <div v-for="card in inventory">
-        <inventory :card="card"></inventory>
+        <card :card="card"></card>
         </div>
       </div>
       <div v-if="this.showDungeons">
@@ -36,7 +36,7 @@
 
 <script>
 import Deck from './Deck'
-import Inventory from './Inventory'
+import Card from './Card'
 import Dungeon from './Dungeon'
 export default {
   name: 'dashboard',
@@ -83,7 +83,7 @@ export default {
   },
   components: {
     Deck,
-    Inventory,
+    Card,
     Dungeon
   }
 }
