@@ -18,7 +18,6 @@ router.post('/register', (req, res) => {
     })
 })
 
-
 router.post('/login', (req, res) => {
   Users.findOne({ email: req.body.email })
     .then(user => {

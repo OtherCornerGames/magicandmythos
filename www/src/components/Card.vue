@@ -5,7 +5,7 @@
 
         <!--Card image-->
         <div class="view overlay hm-white-slight">
-          <img src="https://mdbootstrap.com/img/Photos/Others/food.jpg" class="img img-fluid" alt="">
+          <img src="https://mdbootstrap.com/img/Photos/Others/food.jpg" class="cool img-fluid" alt="">
           <a>
             <div class="mask"></div>
           </a>
@@ -72,5 +72,9 @@ export default {
 .img{
   width: 300px;
   height: 200px;
+}
+.cool{
+  width: 90%;
+  border: 5px solid red;
 }
 </style>
