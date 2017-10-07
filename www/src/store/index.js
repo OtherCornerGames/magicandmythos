@@ -22,6 +22,10 @@ let auth = axios.create({
 
 let state = {
   user: {},
+  loggedIn: false,
+  showDecks: false,
+  showDungeons: false,
+  showInventory: false,
   decks: [{ name: "deck one" }],
   inventory: [{ name: "card one" }],
   dungeons: [{ name: "dungeon one" }],
@@ -39,6 +43,9 @@ export default new Vuex.Store({
   state,
   mutations: {
     //USER
+    setLoggedIn(state, status){
+      state.loggedIn = status
+    },
     setUser(state, user) {
       state.user = user
     },
@@ -46,19 +53,38 @@ export default new Vuex.Store({
       state.loginMessage = 'Invalid email or password'
     },
     //CARDS
+    setToggleInventory(state){
+      state.showDecks = false;
+      state.showDungeons = false;
+      state.showInventory = true;
+    },
     setInventory(state, inventory) {
       state.inventory = inventory
     },
     //DECKS
+    setToggleDecks(state){
+      state.showDecks = true;
+      state.showDungeons = false;
+      state.showInventory = false;
+    },
     setDecks(state, decks) {
       state.decks = decks
     },
     setActiveDeck(state, activeDeck) {
       state.activeDeck = activeDeck
-    }
+    },
+    //DUNGEONS
+    setToggleDungeons(state){
+      state.showDecks = false;
+      state.showDungeons = true;
+      state.showInventory = false;
+    },
   },
   actions: {
     //CARDS
+    toggleInventory({ commit, dispatch }) {
+      commit('setToggleInventory')
+    },
     getInventory({ commit, dispatch }) {
       api('/userinventory')
         .then(res => {
@@ -88,6 +114,9 @@ export default new Vuex.Store({
         .catch(handleError)
     },
     //DECKS
+    toggleDecks({ commit, dispatch }) {
+      commit('setToggleDecks')
+    },
     getActiveDeck({ commit, dispatch }, deckId) {
       api('decks/' + deckId)
         .then(res => {
@@ -119,6 +148,10 @@ export default new Vuex.Store({
             })
         })
         .catch(handleError)
+    },
+    //DUNGEONS
+    toggleDungeons({ commit, dispatch }) {
+      commit('setToggleDungeons')
     },
     //USER
     register({ commit, dispatch }, user) {
@@ -160,6 +193,7 @@ export default new Vuex.Store({
     logout({ commit, dispatch }, user) {
       auth.delete('logout', user)
         .then(res => {
+          commit('setUser', {status: false})
           router.push('/login')
         }).catch(handleError)
     }
