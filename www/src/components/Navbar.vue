@@ -36,6 +36,11 @@
                 <li>
                   <a class="toggles">|</a>
                 </li>
+                <li v-if="user.admin">
+                  <a class="toggles padding-right" @click="toggleDungeons">
+                    <router-link :to="{ name: 'AdminDashboard', params:{id: 0} }" append>Admin Dashboard</router-link>
+                  </a>
+                </li>
               </ul>
               <div id="navbar" class="navbar-collapse collapse" style="font-size:20px;">
                 <div v-show="loggedIn">

@@ -19,6 +19,7 @@
     </div>
   </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -44,7 +45,7 @@ export default {
     user() {
       return this.$store.state.user
     },
-     showDecks() {
+    showDecks() {
       return this.$store.state.showDecks
     },
     showInventory() {
