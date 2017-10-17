@@ -31,7 +31,7 @@
                   <a class="toggles">|</a>
                 </li>
                 <li>
-                  <a class="toggles padding-right">
+                  <a class="toggles padding-right" @click="toggleAdminView">
                     <router-link :to="{ name: 'Dashboard' }" append>Dashboard</router-link>
                   </a>
                 </li>
@@ -80,6 +80,9 @@ export default {
     },
     toggleDungeonEditor() {
       this.$store.dispatch('toggleDungeonEditor')
+    },
+    toggleAdminView() {
+      this.$store.dispatch('toggleAdminView')
     }
   },
   components: {}
@@ -141,6 +144,7 @@ export default {
   color: #fff;
   background-color: #59b5fa;
 }
+
 
 
 
