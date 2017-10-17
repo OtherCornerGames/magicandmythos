@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <router-link to="/dashboard" class="navbar-brand">Magic & Mythos</router-link>
+              <router-link to="/admindashboard" class="navbar-brand">Admin</router-link>
             </div>
             <div id="navbar" class="navbar-collapse collapse" style="font-size:20px;">
               <ul class="nav navbar-nav">
@@ -19,26 +19,20 @@
                   <a class="toggles padding-right">|</a>
                 </li>
                 <li>
-                  <a class="toggles padding-right" @click="toggleDecks">Decks</a>
+                  <a class="toggles padding-right" @click="toggleCards">Edit Cards</a>
                 </li>
                 <li>
                   <a class="toggles padding-right">|</a>
                 </li>
                 <li>
-                  <a class="toggles padding-right" @click="toggleInventory">Inventory</a>
-                </li>
-                <li>
-                  <a class="toggles padding-right">|</a>
-                </li>
-                <li>
-                  <a class="toggles padding-right" @click="toggleDungeons">Dungeons</a>
+                  <a class="toggles padding-right" @click="toggleDungeons">Edit Dungeons</a>
                 </li>
                 <li>
                   <a class="toggles">|</a>
                 </li>
-                <li v-if="user.admin">
-                  <a class="toggles padding-right" @click="toggleDungeons">
-                    <router-link :to="{ name: 'AdminDashboard', params:{id: 0} }" append>Admin Dashboard</router-link>
+                <li>
+                  <a class="toggles padding-right">
+                    <router-link :to="{ name: 'Dashboard' }" append>Dashboard</router-link>
                   </a>
                 </li>
               </ul>
@@ -46,17 +40,10 @@
                 <div v-show="loggedIn">
                   <ul class="nav navbar-nav navbar-right padding-right">
                     <li>
-                      <a class="capitalize">Hello, {{user.username}}!</a>
+                      <a class="capitalize">Hello, Admin!</a>
                     </li>
                     <li>
                       <a class="toggles" @click="logout(user)">Logout</a>
-                    </li>
-                  </ul>
-                </div>
-                <div v-show="loggedIn == false">
-                  <ul class="nav navbar-nav navbar-right padding-right">
-                    <li>
-                      <router-link class="toggles" to="/login">Login</router-link>
                     </li>
                   </ul>
                 </div>
@@ -157,6 +144,8 @@ export default {
   color: #fff;
   background-color: #59b5fa;
 }
+
+
 
 /* @media(max-width:768px) {
   #login-dp {

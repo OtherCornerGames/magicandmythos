@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <div v-if="!adminview">
+      <navbar></navbar>
+    </div>
+    <div v-if="adminview">
+      <adminnavbar></adminnavbar>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import navbar from './components/navbar'
+import navbar from './components/Navbar'
+import adminnavbar from './components/AdminNavbar'
 export default {
   name: 'app',
   mounted() {
     this.$store.dispatch('authenticate')
   },
-  components:{
-    navbar
+  components: {
+    navbar,
+    adminnavbar
+  },
+  computed: {
+    admin(){
+      return this.$store.state.adminView
+    }
   }
 }
 </script>

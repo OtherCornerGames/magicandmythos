@@ -22,6 +22,7 @@ let auth = axios.create({
 
 let state = {
   user: {},
+  adminView: false,
   loggedIn: false,
   showDecks: false,
   showDungeons: false,
