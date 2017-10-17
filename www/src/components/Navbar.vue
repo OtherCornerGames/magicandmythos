@@ -37,8 +37,8 @@
                   <a class="toggles">|</a>
                 </li>
                 <li v-if="user.admin">
-                  <a class="toggles padding-right" @click="toggleDungeons">
-                    <router-link :to="{ name: 'AdminDashboard', params:{id: 0} }" append>Admin Dashboard</router-link>
+                  <a class="toggles padding-right" @click="toggleAdminView">
+                    <router-link :to="{ name: 'AdminDashboard' }" append>Admin Dashboard</router-link>
                   </a>
                 </li>
               </ul>
@@ -96,6 +96,9 @@ export default {
     },
     toggleDungeons() {
       this.$store.dispatch('toggleDungeons')
+    },
+    toggleAdminView(){
+      this.$store.dispatch('toggleAdminView')
     }
   },
   components: {}

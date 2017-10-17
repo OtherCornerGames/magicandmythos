@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div v-if="!adminview">
+    <div v-if="!adminView">
       <navbar></navbar>
     </div>
-    <div v-if="adminview">
+    <div v-if="adminView">
       <adminnavbar></adminnavbar>
     </div>
     <router-view></router-view>
@@ -23,7 +23,7 @@ export default {
     adminnavbar
   },
   computed: {
-    admin(){
+    adminView(){
       return this.$store.state.adminView
     }
   }

@@ -53,6 +53,9 @@ export default new Vuex.Store({
     setLoginMessage(state, error) {
       state.loginMessage = 'Invalid email or password'
     },
+    setToggleAdminView(state){
+      state.adminView = !state.adminView
+    },
     //CARDS
     setToggleInventory(state){
       state.showDecks = false;
@@ -155,6 +158,9 @@ export default new Vuex.Store({
       commit('setToggleDungeons')
     },
     //USER
+    toggleAdminView({commit,dispatch}){
+      commit('setToggleAdminView')
+    },
     register({ commit, dispatch }, user) {
       auth.post('register', user)
         .then(res => {
