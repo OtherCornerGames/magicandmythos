@@ -27,6 +27,8 @@ let state = {
   showDecks: false,
   showDungeons: false,
   showInventory: false,
+  showCardEditor: false,
+  showDungeonEditor: false,
   decks: [{ name: "deck one" }],
   inventory: [{ name: "card one" }],
   dungeons: [{ name: "dungeon one" }],
@@ -44,7 +46,7 @@ export default new Vuex.Store({
   state,
   mutations: {
     //USER
-    setLoggedIn(state, status){
+    setLoggedIn(state, status) {
       state.loggedIn = status
     },
     setUser(state, user) {
@@ -53,11 +55,11 @@ export default new Vuex.Store({
     setLoginMessage(state, error) {
       state.loginMessage = 'Invalid email or password'
     },
-    setToggleAdminView(state){
+    setToggleAdminView(state) {
       state.adminView = !state.adminView
     },
     //CARDS
-    setToggleInventory(state){
+    setToggleInventory(state) {
       state.showDecks = false;
       state.showDungeons = false;
       state.showInventory = true;
@@ -65,8 +67,12 @@ export default new Vuex.Store({
     setInventory(state, inventory) {
       state.inventory = inventory
     },
+    setToggleCardEditor(state) {
+      state.showCardEditor = true;
+      state.showDungeonEditor = false;
+    },
     //DECKS
-    setToggleDecks(state){
+    setToggleDecks(state) {
       state.showDecks = true;
       state.showDungeons = false;
       state.showInventory = false;
@@ -78,11 +84,15 @@ export default new Vuex.Store({
       state.activeDeck = activeDeck
     },
     //DUNGEONS
-    setToggleDungeons(state){
+    setToggleDungeons(state) {
       state.showDecks = false;
       state.showDungeons = true;
       state.showInventory = false;
     },
+    setToggleDungeonEditor(state){
+      state.showCardEditor = false;
+      state.showDungeonEditor = true;
+    }
   },
   actions: {
     //CARDS
@@ -116,6 +126,9 @@ export default new Vuex.Store({
           dispatch('getCardsByDeckId', payload.card.deckId)
         })
         .catch(handleError)
+    },
+    toggleCardEditor({ commit, dispatch }) {
+      commit('setToggleCardEditor')
     },
     //DECKS
     toggleDecks({ commit, dispatch }) {
@@ -157,8 +170,11 @@ export default new Vuex.Store({
     toggleDungeons({ commit, dispatch }) {
       commit('setToggleDungeons')
     },
+    toggleDungeonEditor({ commit, dispatch }) {
+      commit('setToggleDungeonEditor')
+    },
     //USER
-    toggleAdminView({commit,dispatch}){
+    toggleAdminView({ commit, dispatch }) {
       commit('setToggleAdminView')
     },
     register({ commit, dispatch }, user) {
@@ -180,7 +196,7 @@ export default new Vuex.Store({
             // return handleError(res.data.error)
           } else {
             commit('setUser', res.data.data)
-            commit('setLoggedIn', true)            
+            commit('setLoggedIn', true)
             router.push('/dashboard')
           }
         }).catch(handleError)
@@ -203,7 +219,7 @@ export default new Vuex.Store({
       auth.delete('logout', user)
         .then(res => {
           commit('setUser', {})
-          commit('setLoggedIn', false)          
+          commit('setLoggedIn', false)
           router.push('/login')
         }).catch(handleError)
     }

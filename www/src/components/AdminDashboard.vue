@@ -1,10 +1,10 @@
 <template>
   <div class="admindashboard">
     <div class="row">
-      <div v-if="this.showCards">
+      <div v-if="this.showCardEditor">
         <cardeditor></cardeditor>
       </div>
-      <div v-if="this.showDungeons">
+      <div v-if="this.showDungeonEditor">
         <dungeoneditor></dungeoneditor>
       </div>
     </div>
@@ -17,9 +17,17 @@
 export default {
   name: 'admindashboard',
   data() {
-    return {}
+    return {
+    }
   },
-  computed: {},
+  computed: {
+    showCardEditor() {
+      return this.$store.state.showCardEditor
+    },
+    showDungeonEditor() {
+      return this.$store.state.showDungeonEditor
+    }
+  },
   methods: {},
   components: {}
 }

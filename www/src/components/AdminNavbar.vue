@@ -19,13 +19,13 @@
                   <a class="toggles padding-right">|</a>
                 </li>
                 <li>
-                  <a class="toggles padding-right" @click="toggleCards">Edit Cards</a>
+                  <a class="toggles padding-right" @click="toggleCardEditor">Edit Cards</a>
                 </li>
                 <li>
                   <a class="toggles padding-right">|</a>
                 </li>
                 <li>
-                  <a class="toggles padding-right" @click="toggleDungeons">Edit Dungeons</a>
+                  <a class="toggles padding-right" @click="toggleDungeonEditor">Edit Dungeons</a>
                 </li>
                 <li>
                   <a class="toggles">|</a>
@@ -75,14 +75,11 @@ export default {
     logout(user) {
       this.$store.dispatch('logout', user)
     },
-    toggleDecks() {
-      this.$store.dispatch('toggleDecks')
+    toggleCardEditor() {
+      this.$store.dispatch('toggleCardEditor')
     },
-    toggleInventory() {
-      this.$store.dispatch('toggleInventory')
-    },
-    toggleDungeons() {
-      this.$store.dispatch('toggleDungeons')
+    toggleDungeonEditor() {
+      this.$store.dispatch('toggleDungeonEditor')
     }
   },
   components: {}
